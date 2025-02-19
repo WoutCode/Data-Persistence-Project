@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c6cbb0646e1258a4d92b48f10721f44a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  HighScoreText: {fileID: 821642663}
 --- !u!1 &236388431
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,8 +269,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayerName: 
-  highScorePlayer: Nemo
-  highScore: 0
+  HighScorePlayer: 
+  HighScore: 0
 --- !u!4 &236388433
 Transform:
   m_ObjectHideFlags: 0

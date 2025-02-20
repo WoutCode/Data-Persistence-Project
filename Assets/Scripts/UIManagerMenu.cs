@@ -22,7 +22,7 @@ public class UIManagerMenu : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameState.Instance.LoadScores();
+        GameState.Instance.LoadAll();
         HighScoreText.SetText($"Best score : {GameState.Instance.HighScore1Player} : {GameState.Instance.HighScore1}");
                if (GameState.Instance.PlayerName != null) 
         {

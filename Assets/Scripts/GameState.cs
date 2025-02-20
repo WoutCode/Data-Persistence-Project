@@ -91,7 +91,7 @@ public class GameState : MonoBehaviour
             HighScore1Player = PlayerName;
         }
 
-        SaveScores();
+        SaveAll();
     }
 
     [System.Serializable]
@@ -110,7 +110,7 @@ public class GameState : MonoBehaviour
         public string HS5Player;
     }
 
-    public void SaveScores()
+    public void SaveAll()
     {
         SaveData data = new SaveData();
         data.DifficultyLevel = Difficulty;
@@ -129,7 +129,7 @@ public class GameState : MonoBehaviour
         File.WriteAllText(Application.persistentDataPath + "/pongsavefile.json", json);
     }
 
-    public void LoadScores()
+    public void LoadAll()
     {
         string path = Application.persistentDataPath + "/pongsavefile.json";
         if (File.Exists(path))
@@ -165,6 +165,6 @@ public class GameState : MonoBehaviour
         HighScore5 = 0;
         HighScore5Player = "Nemo";
 
-        SaveScores();
+        SaveAll();
     }
 }

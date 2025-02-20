@@ -23,7 +23,7 @@ public class MainManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameState.Instance.LoadScores();
+        GameState.Instance.LoadAll();
         HighScoreText.text = $"Best score : {GameState.Instance.HighScore1Player} : {GameState.Instance.HighScore1}";
 
         const float step = 0.6f;

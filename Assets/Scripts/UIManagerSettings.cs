@@ -29,7 +29,7 @@ public class UIManagerSettings : MonoBehaviour
 
     public void GoBack()
     {
-        GameState.Instance.SaveScores();
+        GameState.Instance.SaveAll();
         SceneManager.LoadScene("start menu");
     }
 

@@ -7,8 +7,8 @@ using TMPro;
 #if UNITY_EDITOR
 using UnityEditor;
 using UnityEditor.UI;
-
 #endif
+
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -56,7 +56,7 @@ public class UIManagerMenu : MonoBehaviour
 #if UNITY_EDITOR
         EditorApplication.ExitPlaymode();
 #else
-        Application.Quit;
+        Application.Quit();
 #endif
     }
 }

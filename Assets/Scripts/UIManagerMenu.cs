@@ -18,7 +18,7 @@ public class UIManagerMenu : MonoBehaviour
     void Start()
     {
         GameState.Instance.LoadScores();
-        HighScoreText.GetComponent<TextMeshProUGUI>().SetText($"Best score : {GameState.Instance.HighScorePlayer} : {GameState.Instance.HighScore}");
+        HighScoreText.GetComponent<TextMeshProUGUI>().SetText($"Best score : {GameState.Instance.HighScore1Player} : {GameState.Instance.HighScore1}");
     }
 
     // Update is called once per frame
@@ -35,6 +35,11 @@ public class UIManagerMenu : MonoBehaviour
     public void StartGame()
     {
         SceneManager.LoadScene("main");
+    }
+
+    public void OpenSettings()
+    {
+        SceneManager.LoadScene("settings");
     }
 
     public void ExitGame()

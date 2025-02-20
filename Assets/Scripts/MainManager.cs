@@ -24,7 +24,7 @@ public class MainManager : MonoBehaviour
     void Start()
     {
         GameState.Instance.LoadScores();
-        HighScoreText.text = $"Best score : {GameState.Instance.HighScorePlayer} : {GameState.Instance.HighScore}";
+        HighScoreText.text = $"Best score : {GameState.Instance.HighScore1Player} : {GameState.Instance.HighScore1}";
 
         const float step = 0.6f;
         int perLine = Mathf.FloorToInt(4.0f / step);
@@ -44,6 +44,10 @@ public class MainManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            SceneManager.LoadScene("start menu");
+        }
         if (!m_Started)
         {
             if (Input.GetKeyDown(KeyCode.Space))
@@ -75,13 +79,8 @@ public class MainManager : MonoBehaviour
     public void GameOver()
     {
         m_GameOver = true;
-        if (m_Points > GameState.Instance.HighScore)
-        {
-            GameState.Instance.HighScore = m_Points;
-            GameState.Instance.HighScorePlayer = GameState.Instance.PlayerName;
-        }
-        HighScoreText.text = $"Best score : {GameState.Instance.HighScorePlayer} : {GameState.Instance.HighScore}";
-        GameState.Instance.SaveScores();
+        GameState.Instance.ProcessScore(m_Points);
+        HighScoreText.text = $"Best score : {GameState.Instance.HighScore1Player} : {GameState.Instance.HighScore1}";
         GameOverText.SetActive(true);
     }
 }

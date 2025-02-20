@@ -3,11 +3,13 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
+using UnityEngine.Rendering;
 
 public class GameState : MonoBehaviour
 {
 
     public string PlayerName;
+    public float Difficulty;
 
     // For high scores, I would have preferred to use a SortedList or something,
     // but we're serializing to json for now and that wouldn't work.
@@ -41,6 +43,8 @@ public class GameState : MonoBehaviour
 
     public void ProcessScore(int score)
     {
+        if (PlayerName == "") PlayerName = "Nemo";
+
         if (score >  HighScore5 && score <= HighScore4) 
         {
             HighScore5 = score;
@@ -93,6 +97,7 @@ public class GameState : MonoBehaviour
     [System.Serializable]
     class SaveData
     {
+        public float DifficultyLevel;
         public int HScore1;
         public string HS1Player;
         public int HScore2;
@@ -108,6 +113,7 @@ public class GameState : MonoBehaviour
     public void SaveScores()
     {
         SaveData data = new SaveData();
+        data.DifficultyLevel = Difficulty;
         data.HScore1 = HighScore1;
         data.HS1Player = HighScore1Player;
         data.HScore2 = HighScore2;
@@ -131,6 +137,7 @@ public class GameState : MonoBehaviour
             string json = File.ReadAllText(path);
             SaveData data = JsonUtility.FromJson<SaveData>(json);
 
+            Difficulty = data.DifficultyLevel;
             HighScore1 = data.HScore1;
             HighScore1Player = data.HS1Player;
             HighScore2 = data.HScore2;

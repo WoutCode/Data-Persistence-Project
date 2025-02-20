@@ -26,9 +26,9 @@ public class Ball : MonoBehaviour
         }
 
         //max velocity
-        if (velocity.magnitude > 3.0f)
+        if (velocity.magnitude > GameState.Instance.Difficulty) //3.0f originally
         {
-            velocity = velocity.normalized * 3.0f;
+            velocity = velocity.normalized * GameState.Instance.Difficulty;
         }
 
         m_Rigidbody.velocity = velocity;

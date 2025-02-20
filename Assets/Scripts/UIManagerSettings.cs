@@ -2,13 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class UIManagerSettings : MonoBehaviour
 {
+    public Slider DifficultySlider;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        if (GameState.Instance.Difficulty < 3.0f)
+        {
+            GameState.Instance.Difficulty = 3.0f;
+        }    
+        DifficultySlider.SetValueWithoutNotify(GameState.Instance.Difficulty);
     }
 
     // Update is called once per frame
@@ -16,8 +23,14 @@ public class UIManagerSettings : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            SceneManager.LoadScene("start menu");
+            GoBack();
         }
+    }
+
+    public void GoBack()
+    {
+        GameState.Instance.SaveScores();
+        SceneManager.LoadScene("start menu");
     }
 
     public void ShowScores()
@@ -28,5 +41,10 @@ public class UIManagerSettings : MonoBehaviour
     public void ClearScores()
     {
         GameState.Instance.ClearScores();
+    }
+
+    public void setDifficulty(float difficulty)
+    {
+        GameState.Instance.Difficulty = difficulty;
     }
 }
